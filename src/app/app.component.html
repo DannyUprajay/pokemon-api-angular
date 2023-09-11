@@ -12,6 +12,9 @@
             <p>{{pokemon.name}}</p>
           </div>
           <div>
+            <p>{{pokemon.created | date }}</p>
+          </div>
+          <div>
             <button (click)="selectPokemon(pokemon)" type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Detail
             </button>
@@ -51,10 +54,10 @@
     <label class="form-label">Types</label>
     <input type="text"  formControlName="types" required>
   </div>
-  <div class="mb-3">
-    <label class="form-label">date</label>
-    <input type="date"  formControlName="created" required>
-  </div>
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">date</label>-->
+<!--    <input type="date"  formControlName="created" required>-->
+<!--  </div>-->
 
 
   <button type="submit" [disabled]="!form.valid">Valider</button>
