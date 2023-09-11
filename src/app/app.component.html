@@ -12,19 +12,21 @@
             <p>{{pokemon.name}}</p>
           </div>
           <div>
-            <button (click)="selectPokemon(pokemon)" type="button" class="btn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button (click)="selectPokemon(pokemon)" type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Detail
             </button>
+            <button (click)="delete(pokemon)" type="button" class="btn btn-primary m-5" >
+              Delete
+            </button>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<form class="container" [formGroup]="form" (ngSubmit)="onSubmit()">
-
+<form class="container text-center p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>Créer votre pokémon</h1>
   <div class="mb-3">
     <label class="form-label">Name</label>
     <input type="text"  formControlName="name" required>

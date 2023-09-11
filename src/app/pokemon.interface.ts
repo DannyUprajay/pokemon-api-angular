@@ -1,5 +1,5 @@
 export interface PokemonInterface {
-  id: string,
+  id: number,
   hp: string,
   cp: string,
   name: string,
