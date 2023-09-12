@@ -64,21 +64,12 @@ export class AppComponent implements OnInit {
         }
     }
 
-    // deleteTask(id: number) {
-    //     let task = this.service.fetchById(id -1);
-    //     console.log(task + " task");
-    //     let index = TACHE.indexOf(task);
-    //     console.log(index + " index")
-    //     TACHE.splice(index,1);
-    // }
-
     delete(pokemon: PokemonInterface){
-        let id: any= pokemon.id;
         let index: any = this.pokemons?.indexOf( pokemon);
         console.log(this.pokemons?.indexOf(pokemon));
         console.log(index + 'index');
         this.pokemons?.splice(index , 1)
-        console.log(id);
+
 
     }
 
