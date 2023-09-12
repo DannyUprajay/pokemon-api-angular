@@ -1,96 +1,20 @@
-
-
-
-<h2 class="text-center">Pokemon api</h2>
-
-<div class="container  text-align-center;">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let pokemon of pokemons; let index = index;" class="col">
-      <div class="card text-center pt-3">
-        <a routerLink="/mangas/{{pokemon.id}}">
-          <img style="width: 150px; height: 100px; object-fit: cover; " src="{{pokemon.picture}}" class="rounded-top card-img-top" alt="...">
-        </a>
-        <div class="card-body">
-          <div>
-            <p>{{pokemon.name}}</p>
-          </div>
-          <div>
-            <p>{{pokemon.created | date }}</p>
-          </div>
-          <div>
-            <button (click)="viewOnePokemon(pokemon.id)" type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Detail
-            </button>
-            <button (click)="deletePokemon(pokemon.id, index)" type="button" class="btn btn-primary m-5" >
-              Delete
-            </button>
-          </div>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="create">Form</a>
+                </li>
+            </ul>
         </div>
-      </div>
     </div>
-  </div>
-</div>
+</nav>
 
-<!--<form class="container text-center p-5" [formGroup]="form" (ngSubmit)="onSubmit()">-->
-<!--  <h1>Créer votre pokémon</h1>-->
-<!--  <div class="mb-3">-->
-<!--    <label class="form-label">Name</label>-->
-<!--    <input type="text"  formControlName="name" required>-->
-<!--  </div>-->
-<!--  <div class="mb-3">-->
-<!--    <label class="form-label">Picture</label>-->
-<!--    <input type="url"  formControlName="picture" required>-->
-<!--  </div>-->
-<!--  <div class="mb-3">-->
-<!--    <label class="form-label">hp</label>-->
-<!--    <input type="text"  formControlName="hp" required>-->
-<!--  </div>-->
-<!--  <div class="mb-3">-->
-<!--    <label class="form-label">cp</label>-->
-<!--    <input type="text"  formControlName="cp" required>-->
-<!--  </div>-->
-<!--  <div class="mb-3">-->
-<!--    <label class="form-label">Types</label>-->
-<!--    <input type="text"  formControlName="types" required>-->
-<!--  </div>-->
-<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;    <label class="form-label">date</label>&ndash;&gt;-->
-<!--&lt;!&ndash;    <input type="date"  formControlName="created" required>&ndash;&gt;-->
-<!--&lt;!&ndash;  </div>&ndash;&gt;-->
-
-
-<!--  <button type="submit" [disabled]="!form.valid">Valider</button>-->
-<!--</form>-->
-
-
-<!-- Modal -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <h1 class="modal-title text-center fs-5" id="exampleModalLabel">{{pokemonDetail?.name}}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-        <div class="mb-3 text-center">
-          <img style="width: 350px; height: 500px; object-fit: cover; " src="{{pokemonDetail?.picture}}" class="rounded-top card-img-top" alt="...">
-        </div>
-        <div class="mb-3">
-          <p>{{pokemonDetail?.name}}</p>
-        </div>
-      <div class="mb-3">
-        <p>CP : {{pokemonDetail?.cp}}</p>
-      </div>
-      <div class="mb-3">
-        <p>HP : {{pokemonDetail?.hp}}</p>
-      </div>
-      <div class="mb-3">
-        <p>TYPE : {{pokemonDetail?.types}}</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<app-pokemon-form></app-pokemon-form>
+<router-outlet></router-outlet>

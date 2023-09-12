@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PokemonFormComponent
+    PokemonFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -19,14 +19,15 @@ export class PokemonService {
   }
 
   deletePokemon(id: number): Observable<resultPokemon>{
-    return this.http.get<resultPokemon>('http://vps204.tyrolium.fr/apiPokemon/index.php?controller=pokemon&task=deletePokemon&userApi=danny&id=' + id);
+    return this.http.get<resultPokemon>('http://vps204.tyrolium.fr/apiPokemon/index.php?controller=pokemon&task=deletePokemon&userApi=Danny&id=' + id);
   }
 
 
-  addPokemon(pokemon: PokemonInterface): Observable<PokemonInterface>{
-    const headers = { 'content-type': 'application/x-www-form-urlencoded'}
-    const body=JSON.stringify(pokemon);
-    return this.http.post<PokemonInterface>(" http://vps204.tyrolium.fr/apiPokemon/index.php?controller=pokemon&task=createPokemon&userApi=Danny", body,{'headers':headers});
+  addPokemon(pokemon: PokemonInterface): Observable<resultPokemon> {
+    const body = JSON.stringify(pokemon);
+    const header = { 'content-type': 'application/x-www-form-urlencoded'};
+    return this.http.post<resultPokemon>("http://vps204.tyrolium.fr/apiPokemon/index.php?controller=pokemon&task=createPokemon&userApi=Danny", body, {'headers': header})
+
   }
 
 

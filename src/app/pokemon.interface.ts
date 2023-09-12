@@ -10,7 +10,7 @@ export interface PokemonInterface {
 
 export interface resultPokemon{
  true:string | undefined
- error: string | undefined
+ err: string | undefined
  userApi: string | undefined
 
 
