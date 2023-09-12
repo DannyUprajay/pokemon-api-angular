@@ -1,12 +1,22 @@
 export interface PokemonInterface {
   id: number,
-  hp: string,
-  cp: string,
+  hp: number,
+  cp: number,
   name: string,
   picture: string,
   types: string,
   created: string
 }
+
+export interface resultPokemon{
+ true:string | undefined
+ error: string | undefined
+ userApi: string | undefined
+
+
+
+}
+
 
 /*
 

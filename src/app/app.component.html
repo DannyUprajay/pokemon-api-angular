@@ -1,8 +1,11 @@
+
+
+
 <h2 class="text-center">Pokemon api</h2>
 
 <div class="container  text-align-center;">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let pokemon of pokemons" class="col">
+    <div *ngFor="let pokemon of pokemons; let index = index;" class="col">
       <div class="card text-center pt-3">
         <a routerLink="/mangas/{{pokemon.id}}">
           <img style="width: 150px; height: 100px; object-fit: cover; " src="{{pokemon.picture}}" class="rounded-top card-img-top" alt="...">
@@ -15,10 +18,10 @@
             <p>{{pokemon.created | date }}</p>
           </div>
           <div>
-            <button (click)="selectPokemon(pokemon)" type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button (click)="viewOnePokemon(pokemon.id)" type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Detail
             </button>
-            <button (click)="delete(pokemon)" type="button" class="btn btn-primary m-5" >
+            <button (click)="deletePokemon(pokemon.id, index)" type="button" class="btn btn-primary m-5" >
               Delete
             </button>
           </div>
@@ -28,40 +31,36 @@
   </div>
 </div>
 
-<form class="container text-center p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <h1>Créer votre pokémon</h1>
-  <div class="mb-3">
-    <label class="form-label">Name</label>
-    <input type="text"  formControlName="name" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Picture</label>
-    <input type="url"  formControlName="picture" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">hp</label>
-    <input type="text"  formControlName="hp" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">cp</label>
-    <input type="text"  formControlName="cp" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">id</label>
-    <input type="text"  formControlName="id" required>
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Types</label>
-    <input type="text"  formControlName="types" required>
-  </div>
+<!--<form class="container text-center p-5" [formGroup]="form" (ngSubmit)="onSubmit()">-->
+<!--  <h1>Créer votre pokémon</h1>-->
 <!--  <div class="mb-3">-->
-<!--    <label class="form-label">date</label>-->
-<!--    <input type="date"  formControlName="created" required>-->
+<!--    <label class="form-label">Name</label>-->
+<!--    <input type="text"  formControlName="name" required>-->
 <!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">Picture</label>-->
+<!--    <input type="url"  formControlName="picture" required>-->
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">hp</label>-->
+<!--    <input type="text"  formControlName="hp" required>-->
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">cp</label>-->
+<!--    <input type="text"  formControlName="cp" required>-->
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label class="form-label">Types</label>-->
+<!--    <input type="text"  formControlName="types" required>-->
+<!--  </div>-->
+<!--&lt;!&ndash;  <div class="mb-3">&ndash;&gt;-->
+<!--&lt;!&ndash;    <label class="form-label">date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="date"  formControlName="created" required>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
 
 
-  <button type="submit" [disabled]="!form.valid">Valider</button>
-</form>
+<!--  <button type="submit" [disabled]="!form.valid">Valider</button>-->
+<!--</form>-->
 
 
 <!-- Modal -->
@@ -93,3 +92,5 @@
     </div>
   </div>
 </div>
+
+<app-pokemon-form></app-pokemon-form>

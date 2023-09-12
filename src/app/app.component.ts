@@ -10,10 +10,11 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
 
-    url = 'http://vps204.tyrolium.fr/apiPokemon/index.php?controller=pokemon&task=getAll';
+    url = 'http://vps204.tyrolium.fr/apiPokemon/index.php?controller=pokemon&task=createPokemon&userApi=Danny';
 
-    pokemons: PokemonInterface[] | undefined;
+    pokemons: PokemonInterface[] = [];
     pokemonDetail: PokemonInterface | undefined;
+    pokemon: PokemonInterface | undefined;
 
     constructor(private pokemonService: PokemonService) {
     }
@@ -25,10 +26,15 @@ export class AppComponent implements OnInit {
         })
     }
 
+    viewOnePokemon(id: number){
+    this.pokemonService.getPokemonById(id).subscribe(pokemonResult => {
+        this.pokemonDetail = pokemonResult;
+    });
+    }
+
     public form: FormGroup = new FormGroup({
         name: new FormControl(''),
         picture: new FormControl(''),
-        id: new FormControl(''),
         hp: new FormControl(''),
         cp: new FormControl(''),
         types: new FormControl(''),
@@ -56,6 +62,7 @@ export class AppComponent implements OnInit {
                 'created': Date(),
 
             };
+
             // @ts-ignore
             this.pokemons.push(addPok);
 
@@ -64,20 +71,23 @@ export class AppComponent implements OnInit {
         }
     }
 
-    delete(pokemon: PokemonInterface){
-        let index: any = this.pokemons?.indexOf( pokemon);
-        console.log(this.pokemons?.indexOf(pokemon));
-        console.log(index + 'index');
-        this.pokemons?.splice(index , 1)
-
-
+    deletePokemon(id: number, index: number){
+    this.pokemonService.deletePokemon(id).subscribe(resultDelete => {
+        if( resultDelete )
+        this.pokemons.splice(id,1);
+})
     }
 
-    selectPokemon(pokemon: PokemonInterface) {
-        this.pokemonDetail = pokemon;
+    // selectPokemon(pokemon: PokemonInterface) {
+    //     this.pokemonDetail = pokemon;
+    // }
 
-        console.log(this.pokemonDetail);
-    }
-
+    // postPokemon(){
+    //     this.pokemon = this.form.value;
+    //     this.pokemonService.postPokemon(this.pokemon).subscribe((response : any)=>{
+    //         console.log(response);
+    //     })
+    // }
 }
+
 
